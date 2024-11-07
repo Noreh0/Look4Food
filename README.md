@@ -1,4 +1,4 @@
-# Look4Food - Padrões de Projeto e Multicamadas Trabalho Final
+<h3>Look4Food - Padrões de Projeto e Multicamadas Trabalho Final</h3>
 # 1 - Código – Main - Refatorado com o Padrão Factory Pattern
 
 Primeiro, organizaremos o código em uma estrutura de pastas que ajuda a manter os arquivos organizados:
@@ -95,3 +95,4 @@ Vantagens do Uso do Builder no Código
 2.	Leitura: Deixa o código mais legível, pois os campos são configurados explicitamente com métodos descritivos (with_nota, with_comentario).
 3.	Manutenção: Se novos campos forem adicionados, é fácil atualizar o AvaliacaoBuilder sem modificar as chamadas em vários lugares do código.
    
+<h3>Hrtpm Ricardo</h3>
