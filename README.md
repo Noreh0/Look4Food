@@ -3,14 +3,25 @@
 
 Primeiro, organizaremos o código em uma estrutura de pastas que ajuda a manter os arquivos organizados:
 project/
+
 │
+
 ├── app/
-│   ├── __init__.py           # Arquivo de inicialização para o padrão Factory
-│   ├── routes.py             # Definindo as rotas separadamente
-│   ├── extensions.py         # Configuração de extensões como JWT, CORS, etc.
-│   └── config.py             # Configuração do app, banco de dados, etc.
+
+│ ├── __init__.py           # Arquivo de inicialização para o padrão Factory
+
+│
+├── routes.py             # Definindo as rotas separadamente
+
+│
+├── extensions.py         # Configuração de extensões como JWT, CORS, etc.
+
+│
+└── config.py             # Configuração do app, banco de dados, etc.
+
 │
 ├── main.py                   # Arquivo principal para executar o app
+
 └── resource/                 # Suas rotas de recursos
 
 Arquivo __init__.py (Definição do Factory)
@@ -27,10 +38,12 @@ Arquivo extensions.py (Extensões do Flask)
 Separar as extensões como JWT, CORS, e SQLAlchemy ajuda a manter o código organizado e fácil de configurar.
 
 ![image](https://github.com/user-attachments/assets/ff1ab05b-25e0-45f4-bfb4-bfb6308b0a10)
+
 Arquivo routes.py (Definindo as Rotas)
 Definimos todas as rotas em um único arquivo e as registramos no app principal através da função register_routes.
 
 ![image](https://github.com/user-attachments/assets/bd671692-bb67-4016-942c-e8562b026f2d)
+
 Arquivo main.py (Ponto de Entrada)
 Agora, o arquivo principal só precisa criar o app e rodá-lo. Isso ajuda a manter o ponto de entrada bem limpo e organizado.
 
@@ -66,14 +79,16 @@ Criaremos uma classe AvaliacaoBuilder que permitirá definir cada campo gradualm
 
 Essa classe AvaliacaoBuilder permite que você crie uma avaliação (avaliacaoModel) de forma incremental, adicionando dados de maneira opcional conforme necessário.
 
-3. Uso do Builder nas Classes de Recurso
+2. Uso do Builder nas Classes de Recurso
 Agora, usamos o AvaliacaoBuilder nos endpoints para construir a avaliação antes de salvá-la ou atualizá-la. Isso melhora a clareza e a flexibilidade ao criar ou modificar instâncias de avaliacaoModel.
 
 ![image](https://github.com/user-attachments/assets/6461a217-dc0c-43cd-bfe9-72c8d18777ab)
 
-4. Exemplo com Atualização de Avaliação
+3. Exemplo com Atualização de Avaliação
 No caso de atualizar uma avaliação existente, você pode modificar apenas os campos necessários usando o Builder:
+
 ![image](https://github.com/user-attachments/assets/04231a5b-9864-4578-b194-44787152907b)
+
  
 Vantagens do Uso do Builder no Código
 1.	Flexibilidade: Constrói objetos com apenas os campos necessários e evita a criação de construtores muito longos com muitos parâmetros.
