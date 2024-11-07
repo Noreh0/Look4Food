@@ -1,4 +1,5 @@
-<h3>Look4Food - Padrões de Projeto e Multicamadas Trabalho Final</h3>
+<h1>Look4Food - Padrões de Projeto e Multicamadas Trabalho Final</h1>
+
 # 1 - Código – Main - Refatorado com o Padrão Factory Pattern
 
 Primeiro, organizaremos o código em uma estrutura de pastas que ajuda a manter os arquivos organizados:
