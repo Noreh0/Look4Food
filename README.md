@@ -4,8 +4,6 @@
 
 Primeiro, organizaremos o código em uma estrutura de pastas que ajuda a manter os arquivos organizados:
 
-app/
-
 │
 
 ├── app/
