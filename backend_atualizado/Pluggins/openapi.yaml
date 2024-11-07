@@ -1,0 +1,168 @@
+openapi: 3.0.0
+info:
+  title: Avaliações API
+  description: API para gerenciamento de avaliações de restaurantes
+  version: "1.0"
+servers:
+  url: http://localhost:5000/
+  description: Servidor de desenvolvimento
+paths:
+  /todasAvaliacoes:
+    get:
+      summary: Lista todas as avaliações
+      responses:
+        "200":
+          description: Uma lista de avaliações
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/avaliacoes"
+    post:
+      summary: Cria uma nova avaliação
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Avaliacao"
+      responses:
+        "201":
+          description: Avaliação criada
+  /avaliacoes/{ID}:
+    get:
+      summary: Encontra uma avaliação pelo ID
+      parameters:
+        name: ID
+        in: path
+        required: true
+        schema:
+          type: integer
+    responses:'200':
+      description: Detalhes da avaliação
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Avaliacao"
+            "404":
+              description: Avaliação não encontrada
+components:
+  schemas:
+    Avaliacao:
+      type: object
+      properties:
+        ID:
+          type: integer
+          description: O identificador único da avaliação
+        Comentario:
+          type: string
+          description: O comentário da avaliação
+        Nota:
+          type: integer
+          description: A nota da avaliação
+        ID_Cliente:
+          type: integer
+          description: O identificador do cliente que fez a avaliação
+        ID_Restaurante:
+          type: integer
+          description: O identificador do restaurante avaliado
+      required: Comentario
+        Nota
+        ID_Cliente
+        ID_Restaurante
+paths:
+  /restaurantes:
+    get:
+      summary: Lista todos os restaurantes
+      responses:
+        '200':
+          description: Uma lista de restaurantes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Restaurante'
+    post:
+      summary: Cadastra um novo restaurante
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Restaurante'
+      responses:
+        '201':
+          description: Restaurante criado com sucesso
+  /restaurantes/{tipo_restaurante}:
+    get:
+      summary: Filtra restaurantes por tipo
+      parameters:
+        - in: path
+          name: tipo_restaurante
+          required: true
+          schema:
+            type: string
+          description: Tipo do restaurante
+      responses:
+        '200':
+          description: Lista de restaurantes filtrados por tipo
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Restaurante'
+  /login:
+    post:
+      summary: Autenticação de restaurante
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+      responses:
+        '200':
+          description: Acesso permitido
+        '401':
+          description: Usuário ou senha incorretos
+  /restaurante/logout:
+    post:
+      summary: Logout do restaurante
+      responses:
+        '200':
+          description: Você foi deslogado com sucesso
+components:
+  schemas:
+    Restaurante:
+      type: object
+      properties:
+        ID:
+          type: integer
+        Nome:
+          type: string
+        CNPJ:
+          type: string
+        email:
+          type: string
+        senha:
+          type: string
+        telefone:
+          type: string
+        Endereco:
+          type: string
+        Cidade:
+          type: string
+        tipo_restaurante:
+          type: string
+        descricao:
+          type: string
+    Login:
+      type: object
+      properties:
+        email:
+          type: string
+        senha:
+          type: string
