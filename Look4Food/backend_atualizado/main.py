@@ -12,8 +12,7 @@ import mariadb
 
 app = Flask(__name__)
 cors = CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mariadb://root:L23092004@192.168.1.102:2321/ExpCriativaapp'
-"""ExpCriativaapp@24"""
+app.config['SQLALCHEMY_DATABASE_URI'] = 'URL'
 app.config['JWT_SECRET_KEY'] = 'SENHA SEGURA, NÃO COMPARTILHE'
 app.config['JWT_BLACKLIST_ENABLE'] = True
 """api = Api(app)"""
@@ -89,3 +88,4 @@ if __name__ == '__main__':
   from sql_alchemy import banco
   banco.init_app(app)
   app.run(debug=True)
+
